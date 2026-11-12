@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151713">
+  <meta name="description" content="AI Solutions builds thoughtful, high-performing websites with the speed of AI and the care of a great team.">
+  <title>AI Solutions — Web, made more human</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #171914;
+      --paper: #f3f2eb;
+      --lime: #d3f36b;
+      --blue: #6879f5;
+      --orange: #e87552;
+      --muted: #77796f;
+      --display: "Manrope", "Avenir Next", sans-serif;
+      --body: "DM Sans", "Avenir Next", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(1240px, calc(100% - 64px)); margin-inline: auto; }
+
+    .hero {
+      min-height: min(850px, 100svh);
+      min-height: max(720px, min(850px, 100svh));
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background: #22261f url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=2400&q=85") center 48% / cover no-repeat;
+      isolation: isolate;
+    }
+    .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(15, 18, 14, .88) 0%, rgba(15, 18, 14, .67) 43%, rgba(15, 18, 14, .18) 100%), linear-gradient(0deg, rgba(15,18,14,.36), transparent 38%); }
+    .nav { height: 92px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.2); }
+    .brand { display: inline-flex; gap: 11px; align-items: center; font: 800 17px var(--display); letter-spacing: 0; }
+    .brand-mark { width: 30px; aspect-ratio: 1; background: var(--lime); color: var(--ink); border-radius: 9px 9px 9px 2px; display: grid; place-items: center; font: 800 17px var(--display); }
+    .nav-links { display: flex; align-items: center; gap: 36px; font-size: 13px; color: rgba(255,255,255,.78); }
+    .nav-links a:hover { color: var(--lime); }
+    .nav-cta { padding: 12px 17px; border: 1px solid rgba(255,255,255,.65); border-radius: 3px; color: #fff; transition: background .2s, color .2s; }
+    .nav-cta:hover { color: var(--ink) !important; background: var(--lime); border-color: var(--lime); }
+    .menu-toggle { display: none; background: none; border: 0; color: white; padding: 8px; cursor: pointer; }
+
+    .hero-content { padding-top: clamp(90px, 12vh, 145px); padding-bottom: 100px; max-width: 860px; }
+    .eyebrow { display: flex; gap: 11px; align-items: center; text-transform: uppercase; letter-spacing: .13em; font-size: 11px; font-weight: 700; }
+    .eyebrow-mark { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 18px var(--lime); }
+    h1 { margin: 26px 0 22px; max-width: 830px; font: 600 clamp(54px, 7.4vw, 102px)/.99 var(--display); letter-spacing: 0; }
+    h1 em { color: var(--lime); font-style: normal; }
+    .hero-copy { max-width: 500px; color: rgba(255,255,255,.77); font-size: 17px; line-height: 1.65; }
+    .hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 34px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 17px; min-height: 52px; padding: 0 20px; border: 0; border-radius: 3px; background: var(--lime); color: var(--ink); font-size: 13px; font-weight: 700; transition: transform .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); background: #e0ff88; }
+    .button svg { width: 16px; height: 16px; }
+    .text-link { font-size: 13px; color: rgba(255,255,255,.85); border-bottom: 1px solid rgba(255,255,255,.48); padding: 7px 0; }
+    .hero-foot { position: absolute; bottom: 30px; left: 0; right: 0; display: flex; justify-content: space-between; align-items: end; color: rgba(255,255,255,.68); font-size: 11px; }
+    .hero-foot strong { color: white; font-weight: 600; }
+    .hero-index { color: var(--lime); font: 600 12px var(--display); }
+
+    .intro { padding: 112px 0 108px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 12%; align-items: end; }
+    .section-label { color: var(--muted); font-size: 11px; letter-spacing: .12em; font-weight: 700; text-transform: uppercase; }
+    .intro h2, .section-heading { margin: 20px 0 0; font: 600 clamp(36px, 4.5vw, 60px)/1.08 var(--display); letter-spacing: 0; }
+    .intro h2 span { color: #8d9185; }
+    .intro-aside { padding-bottom: 4px; }
+    .intro-aside p { margin: 0 0 22px; color: #5f6259; font-size: 16px; line-height: 1.75; }
+    .inline-link { display: inline-flex; gap: 10px; align-items: center; border-bottom: 1px solid var(--ink); padding-bottom: 6px; font-size: 13px; font-weight: 700; }
+    .inline-link svg { width: 15px; height: 15px; }
+
+    .services { background: #e9e9df; padding: 96px 0 104px; }
+    .services-head { display: flex; align-items: end; justify-content: space-between; margin-bottom: 48px; }
+    .services-head .section-heading { max-width: 600px; margin-top: 14px; }
+    .services-note { color: var(--muted); font-size: 12px; max-width: 190px; line-height: 1.6; }
+    .service-list { border-top: 1px solid #c9cbbf; }
+    .service-row { display: grid; grid-template-columns: 72px 1fr 1.05fr 36px; align-items: center; gap: 22px; padding: 25px 0; border-bottom: 1px solid #c9cbbf; }
+    .service-num { color: #8c8f82; font: 600 12px var(--display); }
+    .service-row h3 { margin: 0; font: 600 21px var(--display); letter-spacing: 0; }
+    .service-row p { margin: 0; color: #6b6d64; font-size: 13px; line-height: 1.55; }
+    .service-symbol { width: 33px; height: 33px; border-radius: 50%; display: grid; place-items: center; background: var(--lime); }
+    .service-symbol svg { width: 15px; height: 15px; }
+
+    .approach { padding: 105px 0 115px; background: var(--ink); color: #f6f5ee; }
+    .approach-top { display: flex; justify-content: space-between; gap: 48px; align-items: end; margin-bottom: 57px; }
+    .approach .section-label { color: #a4a69a; }
+    .approach .section-heading { max-width: 610px; }
+    .approach-top p { max-width: 290px; margin: 0 0 4px; color: #a8aaa0; font-size: 14px; line-height: 1.7; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #484a43; }
+    .step { padding: 25px 25px 0 0; }
+    .step + .step { border-left: 1px solid #484a43; padding-left: 26px; }
+    .step-number { color: var(--lime); font: 600 12px var(--display); }
+    .step h3 { margin: 30px 0 12px; font: 600 21px var(--display); }
+    .step p { max-width: 310px; margin: 0; color: #a8aaa0; font-size: 13px; line-height: 1.75; }
+
+    .contact { padding: 108px 0 96px; background: var(--lime); position: relative; overflow: hidden; }
+    .contact::after { content: "AI"; position: absolute; right: 2%; bottom: -155px; color: rgba(23,25,20,.055); font: 800 360px/.8 var(--display); letter-spacing: 0; pointer-events: none; }
+    .contact-inner { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: end; gap: 32px; }
+    .contact .section-label { color: #535b3d; }
+    .contact h2 { max-width: 760px; margin: 16px 0 0; font: 600 clamp(42px, 6.5vw, 82px)/1.02 var(--display); letter-spacing: 0; }
+    .contact .button { flex: 0 0 auto; background: var(--ink); color: white; margin-bottom: 8px; }
+    .contact .button:hover { background: #35382e; }
+    footer { background: var(--ink); color: white; padding: 25px 0; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; align-items: center; color: #a6a89f; font-size: 11px; }
+    .footer-inner .brand { color: white; font-size: 14px; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a:hover { color: var(--lime); }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 40px, 560px); }
+      .hero { min-height: 740px; min-height: max(560px, calc(100svh - 120px)); background-position: 58% center; }
+      .hero::before { background: linear-gradient(90deg, rgba(15,18,14,.85), rgba(15,18,14,.48)), linear-gradient(0deg, rgba(15,18,14,.4), transparent 50%); }
+      .nav { height: 76px; }
+      .menu-toggle { display: block; }
+      .menu-toggle svg { width: 24px; height: 24px; }
+      .nav-links { display: none; position: absolute; top: 76px; left: 0; right: 0; padding: 22px 20px 26px; background: #171914; align-items: stretch; flex-direction: column; gap: 22px; z-index: 5; }
+      .nav-links.is-open { display: flex; }
+      .nav-cta { text-align: center; }
+      .hero-content { padding-top: 65px; padding-bottom: 20px; }
+      h1 { font-size: clamp(52px, 12vw, 78px); }
+      .hero-copy { max-width: 410px; font-size: 15px; }
+      .hero-foot { bottom: 22px; }
+      .hero-foot span:last-child { display: none; }
+      .intro { padding: 32px 0 78px; grid-template-columns: 1fr; gap: 30px; }
+      .intro h2, .section-heading { font-size: clamp(36px, 9vw, 52px); }
+      .intro-aside p { font-size: 15px; }
+      .services { padding: 76px 0 80px; }
+      .services-head { display: block; margin-bottom: 34px; }
+      .services-note { margin-top: 17px; }
+      .service-row { grid-template-columns: 32px 1fr 34px; gap: 12px; padding: 21px 0; }
+      .service-row h3 { font-size: 17px; }
+      .service-row p { grid-column: 2; grid-row: 2; margin-top: -5px; }
+      .service-symbol { grid-column: 3; grid-row: 1; }
+      .approach { padding: 78px 0 84px; }
+      .approach-top { display: block; margin-bottom: 38px; }
+      .approach-top p { margin-top: 22px; }
+      .steps { grid-template-columns: 1fr; }
+      .step, .step + .step { border-left: 0; border-bottom: 1px solid #484a43; padding: 23px 0 25px; }
+      .step h3 { margin: 17px 0 8px; }
+      .contact { padding: 78px 0 74px; }
+      .contact-inner { align-items: start; flex-direction: column; }
+      .contact h2 { font-size: clamp(42px, 10.5vw, 68px); }
+      .contact::after { right: -40px; bottom: -68px; font-size: 220px; }
+      .footer-inner { align-items: start; flex-wrap: wrap; }
+      .footer-inner > span { width: 100%; order: 2; }
+      .footer-links { margin-left: auto; gap: 15px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="wrap">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="AI Solutions home"><span class="brand-mark">a</span>AI Solutions</a>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="#services">What we do</a>
+          <a href="#approach">How we work</a>
+          <a href="#contact" class="nav-cta">Let's talk <span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+      <div class="hero-content">
+        <div class="eyebrow"><span class="eyebrow-mark"></span>Independent digital studio</div>
+        <h1>Websites with<br>an <em>unfair</em><br>advantage.</h1>
+        <p class="hero-copy">We pair sharp human thinking with AI-powered craft to make better websites, faster. Built around your business, not a template.</p>
+        <div class="hero-actions">
+          <a class="button" href="#contact">Build something better <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="text-link" href="#services">Explore what we do</a>
+        </div>
+      </div>
+      <div class="hero-foot"><span><strong>Good ideas deserve</strong><br>better digital homes.</span><span class="hero-index">AI + HUMAN</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro wrap" aria-labelledby="intro-title">
+      <div>
+        <div class="section-label">A different kind of web partner</div>
+        <h2 id="intro-title">More than a website.<br><span>A smarter way to build.</span></h2>
+      </div>
+      <div class="intro-aside">
+        <p>AI gives us room to move faster. Experience tells us where to go. We bring the two together to create useful, memorable digital experiences without the usual drag.</p>
+        <a class="inline-link" href="#approach">Meet our approach <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </section>
+
+    <section class="services" id="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <div class="services-head">
+          <div>
+            <div class="section-label">What we make possible</div>
+            <h2 class="section-heading" id="services-title">From first sketch<br>to launch day.</h2>
+          </div>
+          <p class="services-note">One nimble team for the whole journey, with AI built into the process.</p>
+        </div>
+        <div class="service-list">
+          <article class="service-row">
+            <span class="service-num">01</span><h3>Web design & development</h3><p>Distinctive, responsive websites designed to turn the right visitors into customers.</p>
+            <span class="service-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 6.5h.01M11 6.5h.01"/></svg></span>
+          </article>
+          <article class="service-row">
+            <span class="service-num">02</span><h3>AI integrations</h3><p>Practical AI features and workflows that make your digital product work harder.</p>
+            <span class="service-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48 2.12 2.12m0-12.72-2.12 2.12m-8.48 8.48-2.12 2.12"/><circle cx="12" cy="12" r="4"/></svg></span>
+          </article>
+          <article class="service-row">
+            <span class="service-num">03</span><h3>Strategy & optimization</h3><p>Clear direction, thoughtful experiments, and steady improvements after launch.</p>
+            <span class="service-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M8 14l4-4 3 3 6-7"/><path d="M16 6h5v5"/></svg></span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach" id="approach" aria-labelledby="approach-title">
+      <div class="wrap">
+        <div class="approach-top">
+          <div>
+            <div class="section-label">Human-led. AI-accelerated.</div>
+            <h2 class="section-heading" id="approach-title">Fast where it counts.<br>Thoughtful all the way.</h2>
+          </div>
+          <p>AI handles the busywork, not the big decisions. Our team stays close from kickoff to launch, making sure every detail earns its place.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><span class="step-number">01 / Find the signal</span><h3>Get clear</h3><p>We learn your goals, your audience, and what success actually looks like before we make a thing.</p></article>
+          <article class="step"><span class="step-number">02 / Make it real</span><h3>Build together</h3><p>Quick prototypes and regular check-ins keep the work moving and the direction yours.</p></article>
+          <article class="step"><span class="step-number">03 / Keep getting better</span><h3>Launch & learn</h3><p>We get your site into the world, then use real feedback to make what comes next even stronger.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-inner">
+        <div><div class="section-label">Have a good one in mind?</div><h2 id="contact-title">Let's make the web work harder.</h2></div>
+        <a class="button" href="mailto:hello@aisolutions.com?subject=Let's%20build%20something%20better">Tell us about it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <a class="brand" href="#top"><span class="brand-mark">a</span>AI Solutions</a>
+      <span>Independent by design. Better by build.</span>
+      <div class="footer-links"><a href="#services">Services</a><a href="#approach">Approach</a><a href="#contact">Contact</a></div>
+    </div>
+  </footer>
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('.nav-links');
+    menuButton.addEventListener('click', () => {
+      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+      navigation.classList.toggle('is-open', !isOpen);
+    });
+    navigation.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        navigation.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open menu');
+      }
+    });
+  </script>
+</body>
+</html>
